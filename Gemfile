@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+gem 'rails', '3.2.12'
+gem 'mysql2'
+gem 'cancan'
+gem 'rabl'
+gem 'will_paginate', '~> 3.0.2'
+gem 'thin'
