@@ -1,3 +1,20 @@
+Mar 13, 2013: setup git server and repo on appsudo.com:
+... terminal 1:
+> sudo adduser git --> password=youknow
+> su git
+> cd
+> mkdir .ssh
+... terminal 2 as cleesmith:
+> cd ~/.ssh
+> sudo cp * /home/git/.ssh
+... back to terminal 1:
+> mkdir project.git
+> cd project.git
+> git --bare init
+... now users can do the usual stuff after doing:
+git remote add origin cleesmith@appsudo.com:/home/cleesmith/git/oscollect_share.git
+git push -u origin master
+
 _______________________________________________________________________________________________________________
 ... pushes:
 > gclean
