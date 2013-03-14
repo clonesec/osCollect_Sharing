@@ -12,8 +12,8 @@ Mar 13, 2013: setup git server and repo on appsudo.com:
 > cd project.git
 > git --bare init
 ... now users can do the usual stuff after doing:
-git remote add origin cleesmith@appsudo.com:/home/cleesmith/git/oscollect_share.git
-git push -u origin master
+> git remote add appsudo cleesmith@appsudo.com:/home/cleesmith/git/oscollect_share.git
+> git push -u appsudo master
 
 _______________________________________________________________________________________________________________
 ... pushes:
