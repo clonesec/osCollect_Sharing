@@ -1,7 +1,5 @@
 class SharesController < ApplicationController
-  before_filter :restrict_access
-
-  # respond_to :json
+  before_filter :restrict_access # see application_controller
 
   layout :false
 
@@ -15,7 +13,6 @@ class SharesController < ApplicationController
 
   def create
     # note: always render/return a json response, even for errors
-puts "request=#{request.inspect}"
     api_key = params[:api_key]
     if api_key.blank?
       render json: {errors: ["API key is invalid."]}, status: 422
@@ -28,7 +25,7 @@ puts "request=#{request.inspect}"
     end
     email = params[:email]
     if email.blank?
-      render json: {errors: ["Parameter email is missing."]}, status: 422
+      render json: {errors: ["Parameter email is missing."]}, status: :unprocessable_entity # 422
       return
     end
     share_type = params[:share][:share_type]
@@ -53,20 +50,5 @@ puts "request=#{request.inspect}"
   def destroy
     # respond_with Share.destroy(params[:id])
     render text: params
-  end
-
-  private
-
-  # def restrict_access
-  #   api_key = ApiKey.find_by_access_token(params[:access_token])
-  #   head :unauthorized unless api_key
-  # end
-
-  def restrict_access
-    authenticate_or_request_with_http_token do |token, options|
-puts "token=#{token.inspect}\n options=#{options.inspect}"
-      # ApiKey.exists?(access_token: token)
-      true
-    end
   end
 end

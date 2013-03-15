@@ -1,4 +1,4 @@
-Mar 13, 2013: setup git server and repo on appsudo.com:
+Mar 13, 2013: setup git server and repo's on appsudo.com:
 ... terminal 1:
 > sudo adduser git --> password=youknow
 > su git
