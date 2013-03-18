@@ -8,6 +8,7 @@ OscollectShare::Application.routes.draw do
   resources :users
 
   resources :shares
+  get "shares_list" => "shares#list", :as => "shares_list"
 
   resources :api_keys
 

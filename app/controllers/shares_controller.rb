@@ -1,7 +1,12 @@
 class SharesController < ApplicationController
-  before_filter :restrict_access # see application_controller
+  before_filter :restrict_access, except: [:list]
 
   layout :false
+
+  def list
+    @shares = Share.order('created_at DESC').page(params[:page]).per_page(12)
+    render layout: 'application'
+  end
 
   def index
     render json: Share.order('created_at DESC').all

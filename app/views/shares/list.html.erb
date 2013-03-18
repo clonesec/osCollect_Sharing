@@ -1,0 +1,21 @@
+<h2>Shares</h2>
+<% if @shares.blank? %>
+	<h3>No Shares found.</h3>
+<% else %>
+  <span style="float:right">
+    <%= page_entries_info @shares %>
+  </span>
+  <br />
+  <table class="table table-striped">
+    <tbody>
+      <% @shares.each do |share| %>
+        <tr>
+          <td><%= share.name %></td>
+          <td><%= share.description %></td>
+          <td><%= link_to 'delete', share, confirm: "\n\nAre you sure?\n\n", method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @shares, inner_window: 2, style: 'font-size:small' %>
+<% end %>
