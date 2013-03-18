@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121217125546) do
+ActiveRecord::Schema.define(:version => 20130314014528) do
+
+  create_table "api_keys", :force => true do |t|
+    t.string   "access_token"
+    t.text     "oscollect_client_description"
+    t.datetime "expires_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
 
   create_table "shares", :force => true do |t|
     t.integer  "user_id"
@@ -25,12 +33,14 @@ ActiveRecord::Schema.define(:version => 20121217125546) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "username"
     t.string   "email"
-    t.string   "access_token"
-    t.string   "oscollect_username"
-    t.integer  "oscollect_user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
 end

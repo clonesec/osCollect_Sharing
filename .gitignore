@@ -10,6 +10,15 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
+# Ignore the development equivalent of /home/cleesmith/apps/osprotect/shared/reports/ (i.e. production)
+/shared
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.DS_Store
+__**cls_oscollect_share
+/doc
+/__cls_config
+
+/config/environments/development.rb

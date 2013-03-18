@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OscollectShare</title>
+  <title>osCollect Sharing</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+<%= render partial: 'layouts/navbar' %>
+<div class="container">
+  <div class="content">
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <%= msg  %>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="span12">
+        <%= yield %>
+      </div>
+    </div><!--/row-->
+  </div><!--/content-->
+  <footer style="text-align:center">
+    <hr />
+    <p>2013 osCollect Sharing&nbsp;&nbsp;&nbsp;&nbsp;<%= "#{Time.now.utc.strftime("%A, %b %-d, %Y %H:%M:%S %Z")}" %></p>
+  </footer>
+</div><!-- /container -->
 </html>

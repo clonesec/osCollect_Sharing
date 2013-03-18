@@ -1,0 +1,21 @@
+<h2>API Keys</h2>
+<% if @api_keys.blank? %>
+	<h3>No API keys found.</h3>
+<% else %>
+  <span style="float:right">
+    <%= page_entries_info @api_keys %>
+  </span>
+  <br />
+  <table class="table table-striped">
+    <tbody>
+      <% @api_keys.each do |apikey| %>
+        <tr>
+          <td><%= apikey.access_token %></td>
+          <td><%= apikey.oscollect_client_description %></td>
+          <td><%= link_to 'delete', apikey, confirm: "\n\nAre you sure?\n\n", method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @api_keys, inner_window: 2, style: 'font-size:small' %>
+<% end %>

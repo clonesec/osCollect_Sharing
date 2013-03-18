@@ -1,0 +1,23 @@
+<h2>Admin Users</h2>
+<% unless @users.blank? %>
+  <span style="float:right">
+    <%= page_entries_info @users %>
+  </span>
+  <br />
+  <table class="table table-striped">
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, edit_user_path(user) %></td>
+          <td><%= user.email %></td>
+          <% if user.id == current_user.id || user.username.strip.downcase == 'admin' %>
+            <td>&nbsp;</td>
+          <% else %>
+            <td><%= link_to 'delete', user, confirm: "\n\nAre you sure?\n\n", method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @users, inner_window: 2, style: 'font-size:small' %>
+<% end %>

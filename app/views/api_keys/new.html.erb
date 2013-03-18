@@ -1,0 +1,37 @@
+<div id="api_key">
+	<% if @api_key.errors.any? %>
+	  <div class="alert alert-error">
+	    <h4>Errors:</h4>
+	    <ul class="unstyled">
+	      <% @api_key.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+  <%= form_for @api_key, :html => { :class => 'form-horizontal' } do |f| %>
+    <fieldset>
+      <legend>API Key</legend>
+      <div class="control-group">
+        <label class="control-label">API Key</label>
+        <div class="controls">
+					<% @api_key.ignore_token_edits = @api_key.access_token %>
+          <%= f.hidden_field :access_token %>
+          <%= f.text_field :ignore_token_edits, class: "span5 input-xlarge" %>
+					<br />
+					<em>cut/paste this key into your osCollect instance</em>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">osCollect<br />client<br />description</label>
+        <div class="controls">
+	        <%= f.text_area :oscollect_client_description, rows: 5, class: 'span5', placeholder: "Enter any information that describes the osCollect instance using this API key, e.g. the host name or IP address and port.  An entry is not required but it may help to manage the api keys and sharing between osCollect instances." %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit nil, class: "btn btn-primary" %>
+        <%= link_to 'Cancel', api_keys_path, :class => 'btn' %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
