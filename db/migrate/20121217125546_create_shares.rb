@@ -2,6 +2,7 @@ class CreateShares < ActiveRecord::Migration
   def change
     create_table :shares do |t|
       t.references  :user
+      t.string      :share_origin # host:port
       t.string      :share_token # unique
       t.string      :name
       # search/search_fields, chart, alert, dashboard/widgets, or report:
@@ -10,5 +11,6 @@ class CreateShares < ActiveRecord::Migration
       t.text        :description
       t.timestamps
     end
+    add_index :shares, :share_token
   end
 end

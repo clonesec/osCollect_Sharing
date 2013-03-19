@@ -10,7 +10,9 @@
     <tbody>
       <% @api_keys.each do |apikey| %>
         <tr>
-          <td><%= apikey.access_token %></td>
+          <td>
+						<input type="text" value="<%= apikey.access_token %>" class="span5" />
+					</td>
           <td><%= apikey.oscollect_client_description %></td>
           <td><%= link_to 'delete', apikey, confirm: "\n\nAre you sure?\n\n", method: :delete %></td>
         </tr>

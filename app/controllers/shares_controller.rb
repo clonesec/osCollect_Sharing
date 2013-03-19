@@ -41,11 +41,11 @@ class SharesController < ApplicationController
     # share = Share.new(share_type: share_type)
     # share.share_as_json = params[:share]
     share = Share.new(params[:share])
+    share.share_origin = params[:host]
     share.save(validate: false)
-    sharing = JSON.parse(share.share_as_json)
+    # sharing = JSON.parse(share.share_as_json)
     # puts "sharing(#{sharing.class})=#{sharing.to_yaml}"
-    # render json: share.id
-    render json: share
+    render json: {token: share.share_token}
   end
 
   def update
@@ -53,7 +53,12 @@ class SharesController < ApplicationController
   end
 
   def destroy
-    # respond_with Share.destroy(params[:id])
-    render text: params
+    share = Share.where(share_token: params[:id]).first
+    if share
+      share.destroy
+      render json: {deleted: params[:id]}
+    else
+      render json: {deleted: 'not found'}
+    end
   end
 end

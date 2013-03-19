@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130314014528) do
 
   create_table "shares", :force => true do |t|
     t.integer  "user_id"
+    t.string   "share_origin"
     t.string   "share_token"
     t.string   "name"
     t.string   "share_type"
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20130314014528) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "shares", ["share_token"], :name => "index_shares_on_share_token"
 
   create_table "users", :force => true do |t|
     t.string   "username"
