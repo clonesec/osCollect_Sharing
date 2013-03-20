@@ -13,7 +13,8 @@ class SharesController < ApplicationController
   end
 
   def show
-    render json: Share.find(params[:id])
+    share = Share.where(share_token: params[:id]).first
+    render json: share
   end
 
   def create
