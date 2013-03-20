@@ -21,7 +21,7 @@ cd $RELEASE
 # echo "hookdir=$HOOKDIR" >> ${ROOT}/hook.log
 
 # "lower our shields", i.e. stop the app server using Upstart service created via Foreman/Procfile:
-# sudo service oscollect stop
+sudo service sharing stop
 
 # ln -s "${ROOT}/shared/bundled_gems" "vendor/bundle"
 # bundle install --deployment --without assets development test

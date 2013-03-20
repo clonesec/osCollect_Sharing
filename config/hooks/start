@@ -19,6 +19,7 @@ mkdir -p tmp/
 touch tmp/restart.txt
 
 # create symlink to shared vendor/bundle so we don't repeat gem installs when not needed:
+# ln -s "/home/cleesmith/apps/oscollect_sharing/shared/bundled_gems" "vendor/bundle"
 ln -s "${ROOT}/shared/bundled_gems" "vendor/bundle"
 # bundle install to shared vendor/bundle ignoring assets+development+test groups:
 bundle install --deployment --without assets development test
@@ -28,7 +29,7 @@ bundle exec rake db:seed
 bundle exec rake assets:precompile
 
 # "start'em up da shield", i.e. start the app server using the Upstart service created via Foreman/Procfile:
-# sudo service oscollect start
+sudo service sharing start
 
 echo "end: giddyup start hook" >> ${ROOT}/hook.log
 echo "* * * all done (wait a few seconds then go test it out) * * *"
