@@ -1,7 +1,7 @@
 class CreateShares < ActiveRecord::Migration
   def change
     create_table :shares do |t|
-      t.references  :user
+      t.string      :email
       t.string      :share_origin # host:port
       t.string      :share_token # unique
       t.string      :name
