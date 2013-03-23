@@ -39,13 +39,11 @@ class SharesController < ApplicationController
       render json: {errors: ["Parameter share_type is missing."]}, status: 422
       return
     end
-    # share = Share.new(share_type: share_type)
-    # share.share_as_json = params[:share]
     share = Share.new(params[:share])
     share.share_origin = params[:host]
+    share.email = email
+    share.description = params[:description]
     share.save(validate: false)
-    # sharing = JSON.parse(share.share_as_json)
-    # puts "sharing(#{sharing.class})=#{sharing.to_yaml}"
     render json: {token: share.share_token}
   end
 
@@ -59,7 +57,7 @@ class SharesController < ApplicationController
       share.destroy
       render json: {deleted: params[:id]}
     else
-      render json: {deleted: 'not found'}
+      render json: {errors: 'share not found.'}, status: 422
     end
   end
 end

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20130314014528) do
   end
 
   create_table "shares", :force => true do |t|
-    t.integer  "user_id"
+    t.string   "email"
     t.string   "share_origin"
     t.string   "share_token"
     t.string   "name"
