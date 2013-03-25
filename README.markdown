@@ -104,7 +104,6 @@ Start the sharing server using:
 
 ```
 sudo service sharing start
-
 ```
 
 
