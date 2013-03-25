@@ -86,14 +86,14 @@ Now add to top of file:
   start on runlevel [2345]
 ```
 
-To start the Sharing server:
+After installing the osCollect_Sharing application (see below), you may start the Sharing server using:
 
 ```
 sudo service sharing start
 ```
 
 
-## Install the Ruby on Rails web application osCollect
+## Install the Ruby on Rails web application osCollect_Sharing
 
 1. log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
   * this is the user that executes the rails app
