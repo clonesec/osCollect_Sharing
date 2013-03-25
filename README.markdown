@@ -46,17 +46,17 @@ sudo aptitude -y install autoconf automake bison build-essential flex git-core l
 
 ## Install Ruby 1.9.3 +
 
-### Installing Ruby using **RVM** is an excellent way to manage different versions of Ruby as well as creating **gemsets** for each application and [here is how to install and use it](wiki/rvm "installing and using rvm").
+### Installing Ruby using **RVM** is an excellent way to manage different versions of Ruby as well as creating **gemsets** for each application  ... see the osCollect wiki for instructions.
 
 
 ## Install JavaScript runtime
 
-Installing Node.js provides a [JavaScript runtime](wiki/javascript-runtime "javascript runtime").
+Installing Node.js provides a JavaScript runtime ... see the osCollect wiki for instructions.
 
 
 ## Install Postfix so the osCollect app can send emails, e.g. Alerts
 
-See these instructions [to allow this rails app to send emails](wiki/allowing-a-rails-app-to-send-emails "allowing a rails app to send emails").
+See these instructions to allow this rails app to send emails ... see the osCollect wiki for instructions.
 
 
 ## Install the Web/Application Server
@@ -101,11 +101,11 @@ sudo service sharing start
 3. **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
 4. cd **oscollectsharing**
 5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
-6. edit **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
-7. **bundle exec rake db:migrate** ... create the oscollect database
+6. edit config/database.yml.example and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
+7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
 8. **bundle exec rake db:seed** ... create the initial **admin** user, edit this file to change the admin password and email
-9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server (optional if not using a web server)
-10. visit http://oscollectsharing.com:8888/ (use your domain) in a web browser
+9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
+10. visit http://oscollectsharing.com:8888/ (replace with your domain and port) in a web browser
 
 
 ***
