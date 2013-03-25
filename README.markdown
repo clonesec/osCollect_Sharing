@@ -108,7 +108,7 @@ sudo service sharing start
 
 
 ## Visit http://oscollectsharing.com:8888/
-(replace with your domain and port) in a web browser, and using the admin/password you set in the **db/seed.rb** file (step 8. above) login.
+(replace with your domain and port) in a web browser, and login using the admin/password you set in the **db/seed.rb** file (step 8. above).
 
 After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
 key to be used by an osCollect instance.  Be sure to click the **Create Api Key** button, otherwise the 
