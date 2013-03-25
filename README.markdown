@@ -29,7 +29,7 @@ be used by an osCollect instance.
 sudo adduser oscollectsharing
 ```
 
-This is the account that executes/runs the application/processes, so configure it as a **sudo user** so it may be used to install all of the software.
+This is the account that executes/runs the application, so configure it as a **sudo user** so it may be used to install all of the software.
 
 
 ## Add packages, libraries, and build tools needed by other software installations
@@ -54,7 +54,7 @@ Installing Ruby using **RVM** is an excellent way to manage different versions o
 Installing Node.js provides a JavaScript runtime ... see the osCollect wiki for instructions.
 
 
-## Install Postfix so the osCollect app can send emails, e.g. Alerts
+## Install Postfix so the osCollect Sharing app can send emails, e.g. Password Resets
 
 See these instructions to allow this rails app to send emails ... see the osCollect wiki for instructions.
 
@@ -67,7 +67,7 @@ See these instructions to allow this rails app to send emails ... see the osColl
 3. **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
 4. cd **oscollectsharing**
 5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
-6. edit config/database.yml.example and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
+6. edit **config/database.yml.example** and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect_sharing database
 7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
 8. **bundle exec rake db:seed** ... create the initial **admin** user, edit the **db/seed.rb** file to change the admin password and email
 9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
@@ -75,14 +75,14 @@ See these instructions to allow this rails app to send emails ... see the osColl
 
 ## Install the Web/Application Server
 
-To get started you may use **Thin** as both the rails app/web server, but with an increase in concurrent requests **Nginx/Thin** will be required.
+To get started you may use **Thin** as both the app/web server, but with an increase in concurrent requests **Nginx/Thin** will be required.
 
 (1) log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
 	* this is the user that executes the rails app
 
 (2) cd **/home/oscollectsharing/apps/oscollectsharing** or wherever osCollect Sharing was installed
 
-(3) use Foreman to setup the Upstart Sharing server:
+(3) use Foreman to setup the Upstart sharing server:
 
 ```
 rvmsudo bundle exec foreman export upstart /etc/init -a sharing -d /home/oscollectsharing/apps/oscollectsharing -f Procfile -u oscollectsharing -c web=1 -p 8888
@@ -100,7 +100,7 @@ Now add to top of file:
   start on runlevel [2345]
 ```
 
-After installing the osCollect_Sharing application (see below), you may start the Sharing server using:
+Start the sharing server using:
 
 ```
 sudo service sharing start
@@ -113,7 +113,9 @@ in a web browser, and using the admin/password you set in the **db/seed.rb** fil
 
 After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
 key to be used by an osCollect instance.  Be sure to click the **Create Api Key** button, otherwise the 
-key is not generated.  Once generated, the API Key may be copied to the **config/app_config.yml** file of 
+key is not generated.
+
+Once generated, the API Key may be copied to the **config/app_config.yml** file of 
 the osCollect instance as the config setting **share_api_key**.  Also, be sure to set the **share_url** 
 config setting to the appropriate url of your sharing server.
 
