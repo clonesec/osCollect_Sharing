@@ -69,7 +69,7 @@ See these instructions to allow this rails app to send emails ... see the osColl
 5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
 6. edit config/database.yml.example and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
 7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
-8. **bundle exec rake db:seed** ... create the initial **admin** user, edit this file to change the admin password and email
+8. **bundle exec rake db:seed** ... create the initial **admin** user, edit the **db/seed.rb** file to change the admin password and email
 9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
 
 
@@ -108,7 +108,14 @@ sudo service sharing start
 ```
 
 
-## Visit http://oscollectsharing.com:8888/ (replace with your domain and port) in a web browser
+### Visit http://oscollectsharing.com:8888/ (<- replace with your domain and port) in a web browser, and 
+using the admin/password you set in the **db/seed.rb** file (step 8. above) login.
+
+After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
+key to be used by an osCollect instance.  Be sure to click the **Create Api Key** button, otherwise the 
+key is not generated.  Once generated, the API Key may be copied to the **config/app_config.yml** file of 
+the osCollect instance as the config setting **share_api_key**.  Also, be sure to set the **share_url** 
+config setting to the appropriate url of your sharing server.
 
 
 ***
