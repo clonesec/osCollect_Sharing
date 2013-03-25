@@ -10,8 +10,15 @@
     <tbody>
       <% @shares.each do |share| %>
         <tr>
-          <td><%= share.name %></td>
-          <td><%= share.description %></td>
+          <td>
+						<%= share.name %>
+						<%= share.description %>
+					</td>
+          <td><%= share.share_type %></td>
+          <td><%= share.email %></td>
+          <td><%= share.share_origin %></td>
+          <td><%= share.share_token %></td>
+					<%# cls: deleting causes issues for each osCollect instance's shares table, so don't allow: %>
           <td><%#= link_to 'delete', share, confirm: "\n\nAre you sure?\n\n", method: :delete %></td>
         </tr>
       <% end %>
