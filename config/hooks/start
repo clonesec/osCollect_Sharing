@@ -29,6 +29,7 @@ bundle exec rake db:seed
 bundle exec rake assets:precompile
 
 # "start'em up da shield", i.e. start the app server using the Upstart service created via Foreman/Procfile:
+echo ">>> sudo service sharing start . . ."
 sudo service sharing start
 
 echo "end: giddyup start hook" >> ${ROOT}/hook.log
