@@ -54,7 +54,7 @@ Installing Ruby using **RVM** is an excellent way to manage different versions o
 Installing Node.js provides a JavaScript runtime ... see the osCollect wiki for instructions.
 
 
-## Install Postfix so the osCollect Sharing app can send emails, e.g. Password Resets
+## Install Postfix so the osCollect Sharing app can send emails
 
 See these instructions to allow this rails app to send emails ... see the osCollect wiki for instructions.
 
