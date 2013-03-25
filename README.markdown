@@ -117,7 +117,6 @@ key is not generated.
 
 Once generated, the API Key may be copied to the **config/app_config.yml** file of 
 each, if more than one, osCollect instance as the config setting **share_api_key**.
-
 Also, be sure to set the **share_url** config setting to the appropriate url of your sharing server.
 
 
