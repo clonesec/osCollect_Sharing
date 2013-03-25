@@ -112,7 +112,7 @@ in a web browser, and using the admin/password you set in the **db/seed.rb** fil
 
 After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
 key to be used by an osCollect instance.  Be sure to click the **Create Api Key** button, otherwise the 
-key is not generated.
+key is not valid.
 
 Once generated, the API Key may be copied to the **config/app_config.yml** file of 
 each, if more than one, osCollect instance as the config setting **share_api_key**.
