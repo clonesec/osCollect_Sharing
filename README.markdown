@@ -46,7 +46,7 @@ sudo aptitude -y install autoconf automake bison build-essential flex git-core l
 
 ## Install Ruby 1.9.3 +
 
-### Installing Ruby using **RVM** is an excellent way to manage different versions of Ruby as well as creating **gemsets** for each application  ... see the osCollect wiki for instructions.
+Installing Ruby using **RVM** is an excellent way to manage different versions of Ruby as well as creating **gemsets** for each application  ... see the osCollect wiki for instructions.
 
 
 ## Install JavaScript runtime
