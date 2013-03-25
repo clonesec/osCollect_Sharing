@@ -115,8 +115,7 @@ key to be used by an osCollect instance.  Be sure to click the **Create Api Key*
 key is not valid.
 
 Once generated, the API Key may be copied to the **config/app_config.yml** file of 
-each, if more than one, osCollect instance as the config setting **share_api_key**.  
-Also, be sure to set the **share_url** config setting to the appropriate url of your sharing server.
+each, if more than one, osCollect instance as the config setting **share_api_key**.  Also, be sure to set the **share_url** config setting to the appropriate url of your sharing server.
 
 
 ***
