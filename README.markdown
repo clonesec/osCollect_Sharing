@@ -61,7 +61,7 @@ See these instructions to allow this rails app to send emails ... see the osColl
 
 ## Install the Web/Application Server
 
-### To get started you may use **Thin** as both the rails app/web server, but with an increase in concurrent requests Nginx will be required.
+### To get started you may use **Thin** as both the rails app/web server, but with an increase in concurrent requests **Nginx/Thin** will be required.
 
 (1) log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
 	* this is the user that executes the rails app
