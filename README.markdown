@@ -59,6 +59,20 @@ Installing Node.js provides a JavaScript runtime ... see the osCollect wiki for 
 See these instructions to allow this rails app to send emails ... see the osCollect wiki for instructions.
 
 
+## Install the Ruby on Rails web application osCollect_Sharing
+
+1. log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
+  * this is the user that executes the rails app
+2. cd **/home/oscollectsharing/apps** (mkdir apps, if needed)
+3. **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
+4. cd **oscollectsharing**
+5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
+6. edit config/database.yml.example and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
+7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
+8. **bundle exec rake db:seed** ... create the initial **admin** user, edit this file to change the admin password and email
+9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
+
+
 ## Install the Web/Application Server
 
 To get started you may use **Thin** as both the rails app/web server, but with an increase in concurrent requests **Nginx/Thin** will be required.
@@ -90,22 +104,11 @@ After installing the osCollect_Sharing application (see below), you may start th
 
 ```
 sudo service sharing start
+
 ```
 
 
-## Install the Ruby on Rails web application osCollect_Sharing
-
-1. log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
-  * this is the user that executes the rails app
-2. cd **/home/oscollectsharing/apps** (mkdir apps, if needed)
-3. **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
-4. cd **oscollectsharing**
-5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
-6. edit config/database.yml.example and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect database
-7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
-8. **bundle exec rake db:seed** ... create the initial **admin** user, edit this file to change the admin password and email
-9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
-10. visit http://oscollectsharing.com:8888/ (replace with your domain and port) in a web browser
+## Visit http://oscollectsharing.com:8888/ (replace with your domain and port) in a web browser
 
 
 ***
