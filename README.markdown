@@ -61,17 +61,53 @@ See these instructions to allow this rails app to send emails ... see the osColl
 
 ## Install the Ruby on Rails web application osCollect_Sharing
 
-1. log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
+(1) log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
   * this is the user that executes the rails app
-2. cd **/home/oscollectsharing/apps** (mkdir apps, if needed)
-3. **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
-4. cd **oscollectsharing**
-5. **bundle install --deployment --without assets development test** ... to install **rails** and all of the gems in the **Gemfile**
-6. edit **config/database.yml.example** and save as **config/database.yml** ... edit as appropriate for your installation of MySQL and the oscollect_sharing database
-7. **bundle exec rake db:migrate** ... create the oscollect_sharing database
-8. **bundle exec rake db:seed** ... create the initial **admin** user, edit the **db/seed.rb** file to change the admin password and email
-9. **bundle exec rake assets:precompile** ... compress/prepare assets to be served by a web server
+	* you may also use **oscollect** if on the same server
 
+(2) cd **/home/oscollectsharing/apps/oscollectsharing**
+	* or: cd **/home/oscollect/apps/oscollectsharing**
+
+(3) **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
+
+(4) cd **oscollect** into the new folder
+
+(5) ask an admin, or create the **oscollect_sharing** database:
+
+```
+mysql -u root -p
+> create database `oscollect_sharing` default character set = utf8 default collate = utf8_unicode_ci;
+> create user 'oscollectsharing'@'localhost' IDENTIFIED BY 'some_password';
+> grant all on oscollect_sharing.* to 'oscollectsharing' identified by 'some_password';
+> flush privileges;
+```
+(6) install **rails** and all of the gems in the **Gemfile**
+
+```
+bundle install --deployment --without assets development test
+```
+(7) edit as appropriate for your installation of MySQL and the oscollect_sharing database (see **step (5)** above)
+
+```
+mv database.yml.example database.yml
+nano config/database.yml
+```
+(8) create the oscollect_sharing database:
+
+```
+bundle exec rake db:migrate
+```
+(9) edit db/seed.rb to create the initial **admin** user and be sure to change the admin password and email
+
+```
+nano db/seed.rb
+bundle exec rake db:seed
+```
+(10) prepare assets (i.e. CSS and javascripts) to be served by a web server
+
+```
+bundle exec rake assets:precompile
+```
 
 ## Install the Web/Application Server
 
