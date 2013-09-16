@@ -155,7 +155,7 @@ sudo service sharing start
 ```
 
 
-## Visit http://X.X.X.X:8888/
+## Visit http://X.X.X.X:8888/login
 (replace with your domain(or IP) and port) in a web browser, and login using the admin/password you set in the **db/seed.rb** file in step (9) above.
 
 After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
