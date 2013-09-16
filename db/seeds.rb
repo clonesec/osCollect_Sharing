@@ -4,6 +4,5 @@ if admin
 else
   puts "admin not found, so creating it!"
   # create at least one admin user:
-  # u = User.create!(username: 'admin', email: 'change_me@gmail.com', password: 'change_me', password_confirmation: 'change_me')
-  u = User.create!(username: 'admin', email: 'cleesmith2006@gmail.com', password: 'mollydog', password_confirmation: 'mollydog')
+  u = User.create!(username: 'admin', email: 'change_me@gmail.com', password: 'change_me', password_confirmation: 'change_me')
 end
