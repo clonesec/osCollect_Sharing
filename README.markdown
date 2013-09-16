@@ -14,7 +14,7 @@ be used by an osCollect instance.
 * Prerequisites for the rails web app:
   * a rails app user account
   * add packages, libraries, and build tools needed by other software installations
-  * **Ruby** 1.9.3 +
+  * **Ruby** 2.0.0
   * **JavaScript** runtime
   * **Rails** 3.2.12
   * A web/application server, such as **Nginx/Thin**, or if there are not many concurrent requests **Thin** alone may be used
@@ -34,6 +34,8 @@ This is the account that executes/runs the application, so configure it as a **s
 
 ## Add packages, libraries, and build tools needed by other software installations
 
+**Note:** this was done if you already installed **osCollect**, so don't do it again.
+
 Logged in as **oscollectsharing** do:
 
 ```
@@ -44,17 +46,23 @@ sudo aptitude -y install curl wget nmap nbtscan
 sudo aptitude -y install autoconf automake bison build-essential flex git-core libapr1-dev libaprutil1-dev libc6-dev libcurl4-openssl-dev libexpat1 libffi-dev libpcap-ruby libpcap0.8-dev libpcre3-dev libreadline6 libreadline6-dev libssl-dev libtool libxml2 libxml2-dev libxslt-dev libxslt1-dev libxslt1.1 libyaml-dev ncurses-dev openssl ssl-cert subversion zlib1g zlib1g-dev
 ```
 
-## Install Ruby 1.9.3 +
+## Install Ruby 2.0.0
+
+**Note:** this was done if you already installed **osCollect**, so don't do it again.
 
 Installing Ruby using **RVM** is an excellent way to manage different versions of Ruby as well as creating **gemsets** for each application  ... see the osCollect wiki for instructions.
 
 
 ## Install JavaScript runtime
 
+**Note:** this was done if you already installed **osCollect**, so don't do it again.
+
 Installing Node.js provides a JavaScript runtime ... see the osCollect wiki for instructions.
 
 
 ## Install Postfix so the osCollect Sharing app can send emails
+
+**Note:** this was done if you already installed **osCollect**, so don't do it again.
 
 See these instructions to allow this rails app to send emails ... see the osCollect wiki for instructions.
 
@@ -65,8 +73,7 @@ See these instructions to allow this rails app to send emails ... see the osColl
   * this is the user that executes the rails app
 	* you may also use **oscollect** if on the same server
 
-(2) cd **/home/oscollectsharing/apps/oscollectsharing**
-	* or: cd **/home/oscollect/apps/oscollectsharing**
+(2) cd **/home/oscollectsharing/apps/oscollectsharing** ... or ... cd **/home/oscollect/apps/oscollectsharing**
 
 (3) **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
 

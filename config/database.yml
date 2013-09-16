@@ -1,0 +1,19 @@
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   pool: 25
+#   database: oscollect_sharing
+#   username: rails
+#   password: rails
+#   socket: /tmp/mysql.sock
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 25
+  database: oscollect_sharing
+  username: railsapp
+  password: r1o2r3dec20
+  socket: /var/run/mysqld/mysqld.sock
