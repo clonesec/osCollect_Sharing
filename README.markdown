@@ -74,6 +74,7 @@ See these instructions to allow this rails app to send emails ... see the osColl
 	* you may also use **oscollect** if on the same server
 
 (2) cd **/home/oscollectsharing/apps/oscollectsharing** ... or:
+
 	* cd **/home/oscollect/apps/oscollectsharing**
 
 (3) **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
