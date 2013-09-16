@@ -25,8 +25,10 @@ be used by an osCollect instance.
 
 ## Add a rails user *nix account
 
+**Note:** this was done if you already installed **osCollect**, so don't do it again.
+
 ```
-sudo adduser oscollectsharing
+sudo adduser oscollect
 ```
 
 This is the account that executes/runs the application, so configure it as a **sudo user** so it may be used to install all of the software.
@@ -36,7 +38,7 @@ This is the account that executes/runs the application, so configure it as a **s
 
 **Note:** this was done if you already installed **osCollect**, so don't do it again.
 
-Logged in as **oscollectsharing** do:
+Logged in as **oscollect** do:
 
 ```
 sudo aptitude -y install curl wget nmap nbtscan
@@ -69,15 +71,11 @@ See these instructions to allow this rails app to send emails ... see the osColl
 
 ## Install the Ruby on Rails web application osCollect_Sharing
 
-(1) log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
-  * this is the user that executes the rails app
-	* you may also use **oscollect** if on the same server
+(1) log in as the **oscollect** (i.e. the rails app user, but not **root**)
 
-(2) cd **/home/oscollectsharing/apps/oscollectsharing** ... or:
+(2) cd **/home/oscollect/apps/oscollectsharing**
 
-	* cd **/home/oscollect/apps/oscollectsharing**
-
-(3) **git clone git://github.com/clonesec/osCollect_Sharing.git oscollectsharing** ... to download and create the oscollectsharing folder
+(3) **git clone git://github.com/clonesec/osCollect_Sharing.git** ... to download and create the oscollectsharing folder
 
 (4) cd **oscollectsharing** into the new folder
 
@@ -86,51 +84,56 @@ See these instructions to allow this rails app to send emails ... see the osColl
 ```
 mysql -u root -p
 > create database `oscollect_sharing` default character set = utf8 default collate = utf8_unicode_ci;
-> create user 'oscollectsharing'@'localhost' IDENTIFIED BY 'some_password';
-> grant all on oscollect_sharing.* to 'oscollectsharing' identified by 'some_password';
+> create user 'railsapp'@'localhost' IDENTIFIED BY 'some_password';
+> grant all on oscollect_sharing.* to 'railsapp' identified by 'some_password';
 > flush privileges;
 ```
+
 (6) install **rails** and all of the gems in the **Gemfile**
 
 ```
 bundle install --deployment --without assets development test
 ```
+
 (7) edit as appropriate for your installation of MySQL and the oscollect_sharing database (see **step (5)** above)
 
 ```
 mv database.yml.example database.yml
 nano config/database.yml
 ```
+
 (8) create the oscollect_sharing database:
 
 ```
 bundle exec rake db:migrate
 ```
+
 (9) edit db/seed.rb to create the initial **admin** user and be sure to change the admin password and email
 
 ```
 nano db/seed.rb
 bundle exec rake db:seed
 ```
+
 (10) prepare assets (i.e. CSS and javascripts) to be served by a web server
 
 ```
 bundle exec rake assets:precompile
 ```
 
-## Install the Web/Application Server
+## Install and set up the web app server
 
 To get started you may use **Thin** as both the app/web server, but with an increase in concurrent requests **Nginx/Thin** will be required.
 
-(1) log in as the **oscollectsharing** (i.e. the rails app user, but not **root**)
+(1) log in as the **oscollect** (i.e. the rails app user, but not **root**)
 	* this is the user that executes the rails app
 
-(2) cd **/home/oscollectsharing/apps/oscollectsharing** or wherever osCollect Sharing was installed
+(2) cd **/home/oscollect/apps/oscollectsharing** or wherever osCollect Sharing was installed
 
 (3) use Foreman to setup the Upstart sharing server:
 
 ```
-rvmsudo bundle exec foreman export upstart /etc/init -a sharing -d /home/oscollectsharing/apps/oscollectsharing -f Procfile -u oscollectsharing -c web=1 -p 8888
+rvmsudo bundle exec foreman export upstart /etc/init -a sharing -d /home/oscollect/apps/oscollectsharing -f Procfile -u oscollect -c web=1 -p 8888
 ```
 
 To start the Sharing server when the server boots up do:
