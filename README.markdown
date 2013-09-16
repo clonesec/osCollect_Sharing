@@ -75,9 +75,9 @@ See these instructions to allow this rails app to send emails ... see the osColl
 
 (2) cd **/home/oscollect/apps**
 
-(3) **git clone git://github.com/clonesec/osCollect_Sharing.git** ... to download and create the oscollectsharing folder
+(3) **git clone git://github.com/clonesec/osCollect_Sharing.git** ... to download and create the osCollect_Sharing folder
 
-(4) cd **oscollectsharing** into the new folder
+(4) cd **osCollect_Sharing** into the new folder
 
 (5) ask an admin, or create the **oscollect_sharing** database:
 
@@ -128,12 +128,12 @@ To get started you may use **Thin** as both the app/web server, but with an incr
 (1) log in as the **oscollect** (i.e. the rails app user, but not **root**)
 	* this is the user that executes the rails app
 
-(2) cd **/home/oscollect/apps/oscollectsharing** or wherever osCollect Sharing was installed
+(2) cd **/home/oscollect/apps/osCollect_Sharing** or wherever osCollect Sharing was installed
 
 (3) use Foreman to setup the Upstart sharing server:
 
 ```
-rvmsudo bundle exec foreman export upstart /etc/init -a sharing -d /home/oscollect/apps/oscollectsharing -f Procfile -u oscollect -c web=1 -p 8888
+rvmsudo bundle exec foreman export upstart /etc/init -a sharing -d /home/oscollect/apps/osCollect_Sharing -f Procfile -u oscollect -c web=1 -p 8888
 ```
 
 To start the Sharing server when the server boots up do:
@@ -155,8 +155,8 @@ sudo service sharing start
 ```
 
 
-## Visit http://oscollectsharing.com:8888/
-(replace with your domain and port) in a web browser, and login using the admin/password you set in the **db/seed.rb** file (step 8. above).
+## Visit http://X.X.X.X:8888/
+(replace with your domain(or IP) and port) in a web browser, and login using the admin/password you set in the **db/seed.rb** file in step (9) above.
 
 After logging in, an admin may click on **API Keys** then click **Generate New** to generate a new API 
 key to be used by an osCollect instance.  Be sure to click the **Create Api Key** button, otherwise the 
